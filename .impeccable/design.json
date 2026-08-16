@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-16T00:00:00Z",
+  "title": "Design System: The Golden Record",
+  "extensions": {
+    "colorMeta": {
+      "void": {
+        "role": "neutral",
+        "displayName": "Drenched Void",
+        "canonical": "#0b0d14",
+        "tonalRamp": [
+          "oklch(15% 0.018 265)",
+          "oklch(22% 0.020 265)",
+          "oklch(32% 0.022 265)",
+          "oklch(43% 0.024 265)",
+          "oklch(55% 0.024 265)",
+          "oklch(68% 0.020 265)",
+          "oklch(82% 0.014 265)",
+          "oklch(95% 0.006 265)"
+        ]
+      },
+      "void-deep": {
+        "role": "neutral",
+        "displayName": "Void Deep",
+        "canonical": "#07080e",
+        "tonalRamp": [
+          "oklch(12% 0.016 268)",
+          "oklch(20% 0.018 268)",
+          "oklch(30% 0.020 268)",
+          "oklch(42% 0.022 268)",
+          "oklch(54% 0.022 268)",
+          "oklch(67% 0.018 268)",
+          "oklch(81% 0.012 268)",
+          "oklch(95% 0.005 268)"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Engraved Gold",
+        "canonical": "#d9a94c",
+        "tonalRamp": [
+          "oklch(25% 0.070 82)",
+          "oklch(35% 0.085 82)",
+          "oklch(45% 0.100 82)",
+          "oklch(55% 0.115 82)",
+          "oklch(65% 0.125 82)",
+          "oklch(75% 0.110 82)",
+          "oklch(85% 0.080 82)",
+          "oklch(95% 0.035 82)"
+        ]
+      },
+      "gold-bright": {
+        "role": "primary",
+        "displayName": "Gold Bright",
+        "canonical": "#f0c76e",
+        "tonalRamp": [
+          "oklch(25% 0.065 83)",
+          "oklch(35% 0.080 83)",
+          "oklch(45% 0.095 83)",
+          "oklch(56% 0.110 83)",
+          "oklch(68% 0.120 83)",
+          "oklch(78% 0.105 83)",
+          "oklch(87% 0.075 83)",
+          "oklch(95% 0.032 83)"
+        ]
+      },
+      "peach": {
+        "role": "secondary",
+        "displayName": "Screen Peach",
+        "canonical": "#f2b98a",
+        "tonalRamp": [
+          "oklch(25% 0.055 58)",
+          "oklch(35% 0.070 58)",
+          "oklch(45% 0.082 58)",
+          "oklch(56% 0.090 58)",
+          "oklch(67% 0.092 58)",
+          "oklch(81% 0.080 58)",
+          "oklch(89% 0.055 58)",
+          "oklch(96% 0.024 58)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Luminescent White",
+        "canonical": "#e9ecf2",
+        "tonalRamp": [
+          "oklch(15% 0.008 265)",
+          "oklch(25% 0.009 265)",
+          "oklch(36% 0.010 265)",
+          "oklch(47% 0.011 265)",
+          "oklch(59% 0.012 265)",
+          "oklch(72% 0.011 265)",
+          "oklch(84% 0.009 265)",
+          "oklch(94% 0.006 265)"
+        ]
+      },
+      "dim": {
+        "role": "neutral",
+        "displayName": "Cool Ash",
+        "canonical": "#8c93a6",
+        "tonalRamp": [
+          "oklch(16% 0.014 268)",
+          "oklch(26% 0.017 268)",
+          "oklch(37% 0.020 268)",
+          "oklch(48% 0.022 268)",
+          "oklch(62% 0.024 268)",
+          "oklch(74% 0.020 268)",
+          "oklch(85% 0.014 268)",
+          "oklch(95% 0.006 268)"
+        ]
+      },
+      "etch-strong": {
+        "role": "primary",
+        "displayName": "Etch Strong (gold 62%)",
+        "canonical": "rgba(217, 169, 76, 0.62)",
+        "tonalRamp": [
+          "rgba(217, 169, 76, 0.08)",
+          "rgba(217, 169, 76, 0.17)",
+          "rgba(217, 169, 76, 0.34)",
+          "rgba(217, 169, 76, 0.62)",
+          "rgba(217, 169, 76, 0.75)",
+          "rgba(217, 169, 76, 0.85)",
+          "rgba(217, 169, 76, 0.94)",
+          "rgba(217, 169, 76, 1)"
+        ]
+      },
+      "etch": {
+        "role": "primary",
+        "displayName": "Etch (gold 34%)",
+        "canonical": "rgba(217, 169, 76, 0.34)",
+        "tonalRamp": [
+          "rgba(217, 169, 76, 0.08)",
+          "rgba(217, 169, 76, 0.17)",
+          "rgba(217, 169, 76, 0.34)",
+          "rgba(217, 169, 76, 0.62)"
+        ]
+      },
+      "etch-faint": {
+        "role": "primary",
+        "displayName": "Etch Faint (gold 17%)",
+        "canonical": "rgba(217, 169, 76, 0.17)",
+        "tonalRamp": [
+          "rgba(217, 169, 76, 0.08)",
+          "rgba(217, 169, 76, 0.17)",
+          "rgba(217, 169, 76, 0.34)",
+          "rgba(217, 169, 76, 0.62)"
+        ]
+      },
+      "etch-ghost": {
+        "role": "primary",
+        "displayName": "Etch Ghost (gold 8%)",
+        "canonical": "rgba(217, 169, 76, 0.08)",
+        "tonalRamp": [
+          "rgba(217, 169, 76, 0.08)",
+          "rgba(217, 169, 76, 0.17)",
+          "rgba(217, 169, 76, 0.34)",
+          "rgba(217, 169, 76, 0.62)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The name on the cover. Once per page." },
+      "headline": { "displayName": "Headline", "purpose": "Passage titles and the closing line." },
+      "title": { "displayName": "Title", "purpose": "A position title on the career track." },
+      "subtitle": { "displayName": "Subtitle", "purpose": "Decision and trap headings inside Side B." },
+      "lead": { "displayName": "Lead", "purpose": "The single claim line under the name, capped at 34ch." },
+      "body": { "displayName": "Body", "purpose": "All prose, capped at the 68ch measure." },
+      "label": { "displayName": "Label (.etched)", "purpose": "Every section coordinate, team line, tool group, and caption. Mono, uppercase, wide-tracked." },
+      "figure": { "displayName": "Figure", "purpose": "Manifest quantities and track dates. Mono with tabular numerals, gold." },
+      "action": { "displayName": "Action", "purpose": "The hail and the orbit label. The only peach type on the page." }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve in the system. Exponential ease-out — the record spins down, it does not bounce."
+      },
+      {
+        "name": "slow",
+        "value": "1.1s",
+        "purpose": "Duration of the default .inscribe reveal (opacity + 0.6rem rise)."
+      },
+      {
+        "name": "wipe",
+        "value": "clip-path 1.5s",
+        "purpose": "The engraving gesture. clip-path: inset(0 100% 0 0) opening left-to-right. Reserved for the manifest rows."
+      },
+      {
+        "name": "draw",
+        "value": "stroke-dashoffset 1.9s",
+        "purpose": "Cuts a solid SVG line along its measured path. NEVER apply to a dashed element — it overrides stroke-dasharray and erases the diagram encoding."
+      },
+      {
+        "name": "state",
+        "value": "0.4s",
+        "purpose": "Hail invert and border-colour change on hover/focus."
+      },
+      {
+        "name": "link",
+        "value": "0.35s",
+        "purpose": "Link colour and underline-colour shift on hover."
+      },
+      {
+        "name": "orbit-enter",
+        "value": "0.9s",
+        "purpose": "The orbit dock appearing after the cover scrolls away and retiring at the contact section."
+      },
+      {
+        "name": "playhead",
+        "value": "transform 1.6s",
+        "purpose": "The disc playhead easing to the angle of the section the reader is inside."
+      },
+      {
+        "name": "revolve",
+        "value": "240s linear infinite",
+        "purpose": "The disc's playing surface turning. Halted entirely under prefers-reduced-motion."
+      },
+      {
+        "name": "stagger",
+        "value": "30ms – 110ms per item (data-delay)",
+        "purpose": "Ordering within a revealed group. Manifest 110ms, track 60ms, decisions 40ms, gaps 30ms."
+      },
+      {
+        "name": "observer",
+        "value": "threshold 0.06, rootMargin 0px 0px -12% 0px, once",
+        "purpose": "The single IntersectionObserver that adds .is-drawn and unobserves."
+      }
+    ],
+    "breakpoints": [
+      { "name": "narrow", "value": "900px" },
+      { "name": "phone", "value": "680px" },
+      { "name": "diagram-fade", "value": "940px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "The Hail",
+      "kind": "button",
+      "refersTo": "hail",
+      "description": "The primary contact affordance and the only place the world spends peach. Inverts on hover; never lifts or shadows.",
+      "html": "<a href=\"mailto:someone@example.com\" class=\"ds-hail\">Make contact</a>",
+      "css": ".ds-hail { display: inline-block; font-family: 'Martian Mono Variable', ui-monospace, monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--peach, #f2b98a); text-decoration: none; padding: 0.7rem 1.15rem; border: 1px solid var(--peach, #f2b98a); border-radius: 0; background: transparent; transition: background-color 0.4s cubic-bezier(0.16,1,0.3,1), color 0.4s cubic-bezier(0.16,1,0.3,1); } .ds-hail:hover, .ds-hail:focus-visible { background: var(--peach, #f2b98a); color: var(--void-deep, #07080e); } .ds-hail:focus-visible { outline: 1.5px solid var(--peach, #f2b98a); outline-offset: 3px; }"
+    },
+    {
+      "name": "The Hail, Quiet",
+      "kind": "button",
+      "refersTo": "hail-quiet",
+      "description": "Same geometry in gold. Used where the action is 'look at this' rather than 'contact me', so peach stays rationed.",
+      "html": "<a href=\"#\" class=\"ds-hail-quiet\">themighty.gg</a>",
+      "css": ".ds-hail-quiet { display: inline-block; font-family: 'Martian Mono Variable', ui-monospace, monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold, #d9a94c); text-decoration: none; padding: 0.7rem 1.15rem; border: 1px solid rgba(217, 169, 76, 0.62); border-radius: 0; background: transparent; transition: background-color 0.4s cubic-bezier(0.16,1,0.3,1), color 0.4s cubic-bezier(0.16,1,0.3,1); } .ds-hail-quiet:hover, .ds-hail-quiet:focus-visible { background: var(--gold, #d9a94c); color: var(--void-deep, #07080e); } .ds-hail-quiet:focus-visible { outline: 1.5px solid var(--peach, #f2b98a); outline-offset: 3px; }"
+    },
+    {
+      "name": "The Hail, Large",
+      "kind": "button",
+      "refersTo": "hail-large",
+      "description": "The closing contact action. Roomier padding, relaxed tracking, case restored so a full email address stays readable.",
+      "html": "<a href=\"mailto:someone@example.com\" class=\"ds-hail-large\">someone@example.com</a>",
+      "css": ".ds-hail-large { display: inline-block; font-family: 'Martian Mono Variable', ui-monospace, monospace; font-size: clamp(0.78rem, 0.7rem + 0.4vw, 0.95rem); font-weight: 600; letter-spacing: 0.08em; color: var(--peach, #f2b98a); text-decoration: none; padding: 1rem 1.6rem; border: 1px solid var(--peach, #f2b98a); border-radius: 0; background: transparent; transition: background-color 0.4s cubic-bezier(0.16,1,0.3,1), color 0.4s cubic-bezier(0.16,1,0.3,1); } .ds-hail-large:hover, .ds-hail-large:focus-visible { background: var(--peach, #f2b98a); color: var(--void-deep, #07080e); } .ds-hail-large:focus-visible { outline: 1.5px solid var(--peach, #f2b98a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Engraved Link",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Inline text link. Inherits its colour and carries a gold hairline underline that brightens with the text on hover.",
+      "html": "<a href=\"#\" class=\"ds-link\">LinkedIn</a>",
+      "css": ".ds-link { color: var(--white, #e9ecf2); text-decoration: underline; text-decoration-color: rgba(217, 169, 76, 0.62); text-decoration-thickness: 1px; text-underline-offset: 0.22em; font-family: 'Martian Mono Variable', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; transition: text-decoration-color 0.35s cubic-bezier(0.16,1,0.3,1), color 0.35s cubic-bezier(0.16,1,0.3,1); } .ds-link:hover { color: var(--gold-bright, #f0c76e); text-decoration-color: var(--gold-bright, #f0c76e); } .ds-link:focus-visible { outline: 1.5px solid var(--peach, #f2b98a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Orbit Dock",
+      "kind": "nav",
+      "refersTo": "orbit",
+      "description": "The persistent way back to contact: a turning disc plus a peach label, fixed bottom-right above 680px and docked as a full-width bar below it. Retires when the real contact section is on screen.",
+      "html": "<a href=\"#contact\" class=\"ds-orbit\"><span class=\"ds-orbit-disc\" aria-hidden=\"true\"><svg viewBox=\"0 0 600 600\" fill=\"none\"><circle cx=\"300\" cy=\"300\" r=\"288\" fill=\"#0b0d14\"/><circle cx=\"300\" cy=\"300\" r=\"288\" stroke=\"rgba(217,169,76,0.62)\" stroke-width=\"8\"/><circle cx=\"300\" cy=\"300\" r=\"138\" stroke=\"#d9a94c\" stroke-opacity=\"0.42\" stroke-width=\"7\"/><circle cx=\"300\" cy=\"300\" r=\"186\" stroke=\"#d9a94c\" stroke-opacity=\"0.42\" stroke-width=\"7\"/><circle cx=\"300\" cy=\"300\" r=\"234\" stroke=\"#d9a94c\" stroke-opacity=\"0.42\" stroke-width=\"7\"/><g style=\"transform:rotate(58deg);transform-origin:300px 300px\"><line x1=\"300\" y1=\"300\" x2=\"300\" y2=\"26\" stroke=\"#f2b98a\" stroke-width=\"16\" stroke-opacity=\"0.9\"/><circle cx=\"300\" cy=\"26\" r=\"22\" fill=\"#f2b98a\"/></g><circle cx=\"300\" cy=\"300\" r=\"30\" fill=\"#0b0d14\"/><circle cx=\"300\" cy=\"300\" r=\"30\" stroke=\"rgba(217,169,76,0.62)\" stroke-width=\"6\"/><circle cx=\"300\" cy=\"300\" r=\"12\" fill=\"#f2b98a\"/></svg></span><span class=\"ds-orbit-label\">Make contact</span></a>",
+      "css": ".ds-orbit { display: inline-flex; align-items: center; gap: 0.7rem; padding: 0.45rem 0.95rem 0.45rem 0.5rem; background: var(--void, #0b0d14); border: 1px solid rgba(217, 169, 76, 0.62); border-radius: 0; text-decoration: none; transition: border-color 0.4s cubic-bezier(0.16,1,0.3,1); } .ds-orbit-disc { display: block; width: 44px; flex: none; } .ds-orbit-disc svg { display: block; width: 100%; height: auto; } .ds-orbit-label { font-family: 'Martian Mono Variable', ui-monospace, monospace; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: var(--peach, #f2b98a); white-space: nowrap; } .ds-orbit:hover, .ds-orbit:focus-visible { border-color: var(--peach, #f2b98a); } .ds-orbit:focus-visible { outline: 1.5px solid var(--peach, #f2b98a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Manifest Row",
+      "kind": "custom",
+      "refersTo": "manifest-value",
+      "description": "The page's evidence line: gold quantity, white unit, ghost leader rule, ash mono note. The signature key/value pattern for any full-width data row.",
+      "html": "<ol class=\"ds-manifest\"><li class=\"ds-manifest-row\"><span class=\"ds-manifest-value\">100,000+</span><span class=\"ds-manifest-unit\">transactions / day</span><span class=\"ds-manifest-leader\" aria-hidden=\"true\"></span><span class=\"ds-manifest-note\">sustained through a live PostgreSQL repartition</span></li><li class=\"ds-manifest-row\"><span class=\"ds-manifest-value\">95%</span><span class=\"ds-manifest-unit\">P95 latency reduction</span><span class=\"ds-manifest-leader\" aria-hidden=\"true\"></span><span class=\"ds-manifest-note\">on high-traffic financial transactions</span></li></ol>",
+      "css": ".ds-manifest { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; border-top: 1px solid rgba(217, 169, 76, 0.17); padding-top: 1.75rem; } .ds-manifest-row { display: grid; grid-template-columns: auto auto 1fr auto; align-items: baseline; gap: 0.75rem; padding-block: 0.28rem; } .ds-manifest-value { font-family: 'Martian Mono Variable', ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: clamp(0.95rem, 0.88rem + 0.3vw, 1.15rem); font-weight: 600; letter-spacing: -0.03em; color: var(--gold, #d9a94c); } .ds-manifest-unit { font-size: 0.9rem; color: var(--white, #e9ecf2); } .ds-manifest-leader { height: 1px; background: rgba(217, 169, 76, 0.08); transform: translateY(-0.28em); } .ds-manifest-note { font-family: 'Martian Mono Variable', ui-monospace, monospace; font-size: 0.76rem; letter-spacing: 0.04em; color: var(--dim, #8c93a6); text-align: right; } @media (max-width: 680px) { .ds-manifest-row { grid-template-columns: auto 1fr; row-gap: 0.15rem; } .ds-manifest-leader { display: none; } .ds-manifest-note { grid-column: 1 / -1; text-align: left; } }"
+    },
+    {
+      "name": "Track Stop",
+      "kind": "list item",
+      "refersTo": "track-mark",
+      "description": "One marked position on a single continuous career line. The hairline ramps from etch-strong to etch-ghost down its length; exactly one marker is ever filled peach.",
+      "html": "<ol class=\"ds-track\"><li class=\"ds-stop\"><span class=\"ds-stop-mark ds-stop-mark-live\" aria-hidden=\"true\"></span><div class=\"ds-stop-when\"><span class=\"ds-stop-start\">Aug 2025</span><span class=\"ds-etched\">Present</span></div><div><h3 class=\"ds-stop-title\">Senior Associate Software Engineer</h3><p class=\"ds-etched ds-stop-team\">Backend &middot; Payments &middot; McLean, VA</p><ul class=\"ds-entries\"><li>Orchestrated a zero-downtime migration to a partitioned PostgreSQL architecture.</li><li>Cut P95 latency 95% on high-traffic financial transactions.</li></ul></div></li></ol>",
+      "css": ".ds-track { list-style: none; margin: 0; padding: 0; position: relative; } .ds-track::before { content: ''; position: absolute; left: 0; top: 0.7rem; bottom: 1rem; width: 1px; background: linear-gradient(to bottom, rgba(217,169,76,0.62), rgba(217,169,76,0.34) 55%, rgba(217,169,76,0.08)); } .ds-stop { position: relative; display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0 3rem; padding: 0 0 3.25rem 2rem; } .ds-stop-mark { position: absolute; left: -3.5px; top: 0.62rem; width: 8px; height: 8px; border: 1px solid var(--gold, #d9a94c); border-radius: 50%; background: var(--void, #0b0d14); } .ds-stop-mark-live { background: var(--peach, #f2b98a); border-color: var(--peach, #f2b98a); } .ds-stop-when { display: flex; flex-direction: column; gap: 0.3rem; } .ds-stop-start { font-family: 'Martian Mono Variable', ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--gold, #d9a94c); } .ds-stop-title { margin: 0; font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.04; color: var(--white, #e9ecf2); } .ds-etched { font-family: 'Martian Mono Variable', ui-monospace, monospace; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--dim, #8c93a6); } .ds-stop-team { margin: 0.5rem 0 0; } .ds-entries { margin: 1.35rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.85rem; max-width: 68ch; color: var(--dim, #8c93a6); } .ds-entries li { position: relative; padding-left: 1.4rem; } .ds-entries li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 0.7rem; height: 1px; background: rgba(217, 169, 76, 0.34); } @media (max-width: 680px) { .ds-stop { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; padding-left: 1.5rem; } .ds-stop-when { flex-direction: row; align-items: baseline; gap: 0.6rem; } }"
+    },
+    {
+      "name": "Gap Row",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The published defect register: a term/description pair on ghost hairlines. Collapses to one column below 900px.",
+      "html": "<dl class=\"ds-gaps\"><div class=\"ds-gap\"><dt>No horizontal reflow of the architecture diagram</dt><dd>Below 680px the diagram scrolls and shows three of seven nodes.</dd></div><div class=\"ds-gap\"><dt>Telemetry drops past 10,000 metric series</dt><dd>The free tier fails silently, precisely when monitoring is needed.</dd></div></dl>",
+      "css": ".ds-gaps { margin: 0; max-width: 68rem; border-top: 1px solid rgba(217, 169, 76, 0.17); } .ds-gap { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 0.4rem 2.5rem; padding-block: 1.15rem; border-bottom: 1px solid rgba(217, 169, 76, 0.08); } .ds-gap dt { font-weight: 500; color: var(--white, #e9ecf2); } .ds-gap dd { margin: 0; color: var(--dim, #8c93a6); font-size: 0.94rem; } @media (max-width: 900px) { .ds-gap { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; } }"
+    },
+    {
+      "name": "Constraint Bracket",
+      "kind": "card",
+      "refersTo": null,
+      "description": "The closest thing to a container in the system, and it is deliberately open: a single gold hairline on the left edge with no box around the content. Use this instead of a card.",
+      "html": "<div class=\"ds-constraint\"><h3 class=\"ds-constraint-line\">Two gigabytes of RAM and a ten-thousand-series ceiling decided everything.</h3><p class=\"ds-constraint-body\">Nearly every interesting decision is downstream of those two numbers.</p></div>",
+      "css": ".ds-constraint { padding-left: 1.75rem; border-left: 1px solid rgba(217, 169, 76, 0.34); border-radius: 0; background: transparent; } .ds-constraint-line { margin: 0; font-size: clamp(1.25rem, 1rem + 1.1vw, 1.8rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.04; max-width: 26ch; color: var(--gold, #d9a94c); } .ds-constraint-body { margin: 1.1rem 0 0; max-width: 68ch; line-height: 1.62; color: var(--dim, #8c93a6); }"
+    },
+    {
+      "name": "Skip Link",
+      "kind": "nav",
+      "refersTo": "skip-link",
+      "description": "Off-canvas until focused. The first thing a keyboard reader sees is already in the world's material vocabulary.",
+      "html": "<a href=\"#manifest\" class=\"ds-skip\">Skip to the record</a>",
+      "css": ".ds-skip { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--void-deep, #07080e); color: var(--peach, #f2b98a); border: 1px solid var(--gold, #d9a94c); border-radius: 0; padding: 0.75rem 1.25rem; font-family: 'Martian Mono Variable', ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; } .ds-skip:focus { left: 1rem; top: 1rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Golden Record",
+    "overview": "A career pressed onto a plate and sent outward to a stranger with no context. The page is an engraved manifest of real quantities, not a portfolio: it refuses the dark-portfolio card grid entirely and replaces it with one continuous sheet, ruled by a single hairline spine, on which sections are passages rather than objects. Every mark on the surface is a drawn line. Nothing is lit from behind, nothing is frosted, nothing floats above anything else.\n\nThe world is code-led. No comp was ever produced for it and none is owed; the built stylesheet is the original and this document is its record, written after the fact from what actually shipped. Where the direction contract and the build disagree, the build is authoritative and the divergence is named.\n\nDensity is high and quiet. The reader is a recruiter scanning in a batch of tabs, so the evidence — quantities, dates, system shape — is set in monospace and pinned to rules, while the persuasion is set in a warm grotesque and given a 68ch measure. The single moment of warmth on the whole surface is the contact affordance. That scarcity is the design.",
+    "keyCharacteristics": [
+      "Drenched void ground; gold hairline as the only structural material.",
+      "Four gold opacities carry all depth. No shadow, blur, glass, or gradient fill.",
+      "Peach is spent exclusively on contact and live state — nowhere else, ever.",
+      "Every figure, date, label, and coordinate is monospace with tabular numerals.",
+      "Zero corner radius everywhere except one 8px status dot.",
+      "One continuous plate; hairline-separated passages, never stacked cards.",
+      "Motion is inscription: marks are cut or drawn on entry, never bounced or faded up from nothing."
+    ],
+    "rules": [
+      {
+        "name": "The Spent Peach Rule",
+        "body": "Peach appears in exactly seven places and nowhere else: the contact hail (border and text), the orbit dock label, the first track marker (the live position), the disc playhead and spindle, the lit egress edge in the architecture diagram, the caret and focus ring, and the handheld screen in the figure. Every one of those is either contact or this is live. If a new element wants peach, it must be one of those two things; otherwise it is gold.",
+        "section": "colors"
+      },
+      {
+        "name": "The Four-Opacity Rule",
+        "body": "Structural CSS lines use gold at one of four recorded opacities. A fifth value in a stylesheet is not a new token, it is a mistake. (Drawn SVG artwork is the one place that modulates stroke-opacity freely against raw --gold / --peach — grooves, pulsar ticks, and the figure's lit contours all do — because that is shading a drawing, not building a layout.)",
+        "section": "colors"
+      },
+      {
+        "name": "The One-Metal Rule",
+        "body": "There is no second hue in the structure. Green, red, blue, and every categorical palette are outside this world; state and emphasis are carried by opacity and by peach, never by a new colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Figure Rule",
+        "body": "Every number, date, coordinate, unit, and machine name on the page is Martian Mono with tabular-nums. Monospace here is measurement, not a costume for 'technical' — never set an English sentence in it (the one deliberate exception is the architecture figcaption, which is a caption of a technical drawing).",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Serif-Fallback Rule",
+        "body": "The display stack falls to ui-sans-serif and system-ui before anything else. A webfont failure must never swap the page's voice to Times.",
+        "section": "typography"
+      },
+      {
+        "name": "The One-Plate Rule",
+        "body": "Sections are passages on a single engraved sheet. They share the spine, they are separated by a hairline, and they never close a box. Do not introduce a card, a panel, a rounded container, or a section background.",
+        "section": "layout"
+      },
+      {
+        "name": "The Spine-Pinned Rule",
+        "body": "Content indents past the spine rather than centring on it. New sections adopt padding-left: calc(var(--spine) + 1.75rem) above 680px and 1.5rem below it, so every passage shares one left edge down the whole document.",
+        "section": "layout"
+      },
+      {
+        "name": "The Drawn-Line Rule",
+        "body": "Every mark is a stroked line. No box-shadow, no filter: blur, no backdrop-filter, no glow halo, no glass, no gradient fill, no raster texture. If an element needs to feel closer, raise its gold opacity or its stroke weight. The two named exceptions are the track rule's opacity ramp and the architecture scroller's mask-image edge fade; neither is a fill and neither is precedent.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Dashed-Never-Draws Rule",
+        "body": "A dashed SVG element uses .inscribe, never .draw. .draw sets stroke-dasharray in CSS, which beats the presentation attribute and silently erases the diagram's encoding — dashed means outside the 2 GB host and asynchronous telemetry path, and losing it turns a true drawing into a false one. This shipped as a regression once and was caught in review.",
+        "section": "motion"
+      },
+      {
+        "name": "The Legible-First Rule",
+        "body": "Content is legible before any reveal runs. Motion only adjusts an already-readable element; nothing on the page depends on JavaScript to become visible. .no-js and prefers-reduced-motion both neutralise all three motion classes, and any new animated class must be added to both escape hatches in the same commit.",
+        "section": "motion"
+      }
+    ],
+    "dos": [
+      "Do carry depth with gold opacity and line weight — etch-strong for the nearest edge down to etch-ghost for a whisper.",
+      "Do set every number, date, unit, and machine name in Martian Mono with tabular-nums.",
+      "Do pin new sections to the spine with the recorded left indent, separated from the previous passage by a 1px etch-faint top border.",
+      "Do use .inscribe for dashed SVG and .draw only for solid geometry.",
+      "Do pass compact to Disc at any size under roughly 64px.",
+      "Do keep prose to the 68ch measure and wide data lists to 68rem.",
+      "Do invert a hail on hover (fill with its own border colour, knock text to void-deep) rather than lifting, scaling, or shadowing it.",
+      "Do register any new animated class in both the .no-js block and the prefers-reduced-motion block.",
+      "Do keep all content in src/data/record.ts. Every fact on this site traces to the resume, GitHub, or the Mighty engineering docs — nothing here is invented, and no realistic-looking placeholder may be added that reads as fact.",
+      "Do describe infrastructure by shape and reasoning only. The repository is public: no account identifiers, bucket names, parameter paths, hostnames, or credentials, ever — not in copy, not in a diagram label, not in a comment."
+    ],
+    "donts": [
+      "Don't add a box-shadow, filter: blur, backdrop-filter, glow, glass surface, or gradient fill. The two linear-gradient uses in the build (the track rule's opacity ramp and the architecture scroller's mask-image edge fade) are named exceptions, not precedent.",
+      "Don't introduce a card, panel, inset surface, or section background. The page is one plate.",
+      "Don't round a corner. 0 everywhere; the 8px status dot and the drawn phone screen are the only curves.",
+      "Don't spend peach on anything that is not contact or live state. Decoration, emphasis, hover-for-its-own-sake, and 'just this once' all get gold.",
+      "Don't add a fifth gold opacity to a stylesheet, or a second structural hue of any kind.",
+      "Don't use a border heavier than 1px for structure, or a glyph/icon-font bullet — list markers are drawn 0.7rem hairline dashes.",
+      "Don't let two contact affordances be live at the same time; the orbit dock retires when the real contact section is on screen.",
+      "Don't stack a fixed floating element over the prose column on narrow screens — dock it and reserve its height on the plate.",
+      "Don't set an English sentence in Martian Mono, or let the display stack fall through to a serif."
+    ]
+  }
+}

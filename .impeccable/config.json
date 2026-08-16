@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-color",
+        "value": "#000",
+        "createdAt": "2026-08-16T19:58:26.435Z",
+        "reason": "Not a palette colour: this is the opaque stop of the architecture scroller's mask-image alpha ramp, where #000 means 'fully visible'. DESIGN.md records the mask as a named deliberate exception."
+      }
+    ]
+  }
+}

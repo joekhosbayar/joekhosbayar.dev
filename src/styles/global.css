@@ -1,0 +1,248 @@
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/martian-mono';
+
+/* ==========================================================================
+   THE GOLDEN RECORD
+   Everything on this page is engraved line. No gradients, no glass, no glow.
+   Depth comes from line weight and gold opacity, never from a blur halo.
+   ========================================================================== */
+
+:root {
+  --void: #0b0d14;
+  --void-deep: #07080e;
+  --gold: #d9a94c;
+  --gold-bright: #f0c76e;
+  --peach: #f2b98a;
+  --white: #e9ecf2;
+  --dim: #8c93a6;
+
+  /* Engraved line weights. Gold at descending strength — this is the depth
+     system: nearer lines are brighter, not larger or shadowed. */
+  --etch-strong: rgba(217, 169, 76, 0.62);
+  --etch: rgba(217, 169, 76, 0.34);
+  --etch-faint: rgba(217, 169, 76, 0.17);
+  --etch-ghost: rgba(217, 169, 76, 0.08);
+
+  /* A webfont failure must not swap the display voice to Times. */
+  --display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Helvetica, Arial, sans-serif;
+  --mono: 'Martian Mono Variable', ui-monospace, monospace;
+
+  --measure: 68ch;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --spine: clamp(1.25rem, 4vw, 4rem);
+
+  /* Exponential ease-out — the record spins down, it does not bounce. */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --slow: 1.1s;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  /* The disc is allowed to bleed past the trim; the document is not allowed
+     to scroll sideways because of it. */
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--white);
+  font-family: var(--display);
+  font-size: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  line-height: 1.62;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* --- Browser surfaces. These ship with defaults belonging to no design
+   system; on an engraved page they are gold. ------------------------------ */
+
+::selection {
+  background: var(--gold);
+  color: var(--void-deep);
+}
+
+:root {
+  caret-color: var(--peach);
+  scrollbar-color: var(--etch) transparent;
+  scrollbar-width: thin;
+  accent-color: var(--gold);
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--etch);
+  border: 3px solid var(--void-deep);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--etch-strong);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--peach);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--etch-strong);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+a:hover {
+  color: var(--gold-bright);
+  text-decoration-color: var(--gold-bright);
+}
+
+/* --- Type ---------------------------------------------------------------- */
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Every label, figure, and coordinate on the record is engraved mono —
+   this is measurement, not a costume for "technical". */
+.etched {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.figure {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* --- The plate ----------------------------------------------------------- */
+
+/* One continuous engraved sheet. Sections are passages on a single plate,
+   never stacked cards — they share the spine and never close a box. */
+.plate {
+  position: relative;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* The running spine: one hairline down the whole document, the rule every
+   annotation pins to. */
+.spine-rule {
+  position: absolute;
+  inset-block: 0;
+  left: var(--spine);
+  width: 1px;
+  background: var(--etch-faint);
+  pointer-events: none;
+}
+
+.passage {
+  position: relative;
+  padding-block: clamp(5rem, 11vh, 9rem);
+}
+
+/* More space above a heading than below it. */
+.passage > h2 {
+  margin-bottom: 2.25rem;
+}
+
+.prose {
+  max-width: var(--measure);
+  color: var(--dim);
+}
+.prose strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* --- Motion: one authored moment ----------------------------------------
+   Engraved lines are inscribed, drawn along their path. Content is visible
+   by default; the reveal only adjusts an already-legible element. */
+
+.inscribe {
+  opacity: 0;
+  transform: translateY(0.6rem);
+  transition: opacity var(--slow) var(--ease), transform var(--slow) var(--ease);
+}
+.inscribe.is-drawn {
+  opacity: 1;
+  transform: none;
+}
+
+/* The engraving gesture: the mark is cut left-to-right rather than faded in.
+   Reserved for the manifest, so the page's own evidence arrives differently
+   from everything else. */
+.wipe {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.5s var(--ease);
+}
+.wipe.is-drawn {
+  clip-path: inset(0 0 0 0);
+}
+
+.no-js .inscribe,
+.no-js .draw,
+.no-js .wipe {
+  opacity: 1;
+  transform: none;
+  clip-path: none;
+}
+
+.draw {
+  stroke-dasharray: var(--len, 1000);
+  stroke-dashoffset: var(--len, 1000);
+  transition: stroke-dashoffset 1.9s var(--ease);
+}
+.draw.is-drawn {
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .inscribe,
+  .draw,
+  .wipe {
+    opacity: 1;
+    transform: none;
+    stroke-dashoffset: 0;
+    clip-path: none;
+    transition: none;
+  }
+  .disc-spin {
+    animation: none !important;
+  }
+}

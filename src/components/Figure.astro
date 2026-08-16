@@ -1,0 +1,87 @@
+---
+/**
+ * The solitary human, drawn in the record's own grammar — the Voyager plaque's
+ * schematic outline, updated to a person absorbed in a handheld screen.
+ *
+ * The screen is the only light in the composition. Contours it reaches are
+ * peach; everything it does not reach stays gold. That is the whole lighting
+ * model — no blur, no glow, no gradient. Light changes the colour of a line.
+ *
+ * Staged against the disc, not beside the text: the point of this figure is
+ * how small it is next to the record.
+ */
+---
+
+<svg
+  class="figure"
+  viewBox="0 0 200 300"
+  role="img"
+  aria-label="An engraved outline of one person standing alone, head bowed over a handheld screen whose light picks out their hands, forearms, chest and jaw."
+  fill="none"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <g stroke-width="2">
+    <!-- Head, bowed toward the screen. One closed contour: the plaque draws a
+         person as an outline, not a portrait. -->
+    <g transform="rotate(4 100 50)">
+      <ellipse class="draw" cx="100" cy="46" rx="26" ry="31" stroke="var(--gold)" />
+      <!-- Crown line: enough to read as a head rather than an egg -->
+      <path
+        class="draw"
+        d="M77 34c5-9 13.5-14 23-14s18 5 23 14"
+        stroke="var(--gold)"
+        stroke-opacity="0.55"
+      />
+      <!-- The jaw is the first thing the screen reaches -->
+      <path class="draw" d="M82 64c5.5 8 11.5 12 18 12s12.5-4 18-12" stroke="var(--peach)" />
+    </g>
+
+    <!-- Neck. Front edge lit, back edge not. -->
+    <path class="draw" d="M89 76v17" stroke="var(--peach)" stroke-opacity="0.75" />
+    <path class="draw" d="M111 76v17" stroke="var(--gold)" />
+
+    <!-- Shoulders and torso -->
+    <path
+      class="draw"
+      d="M89 93c-19 3-32 10-38 21-5 9-7 22-7.6 37-.5 13-.6 30-.6 51"
+      stroke="var(--gold)"
+    />
+    <path
+      class="draw"
+      d="M111 93c19 3 32 10 38 21 5 9 7 22 7.6 37 .5 13 .6 30 .6 51"
+      stroke="var(--gold)"
+    />
+    <!-- Chest turned into the light -->
+    <path class="draw" d="M74 110c8 4.5 17 7 26 7s18-2.5 26-7" stroke="var(--peach)" stroke-opacity="0.5" />
+
+    <!-- Upper arms fall, forearms lift back in to the screen. -->
+    <path class="draw" d="M51 114c-6 17-8.5 35-7 48" stroke="var(--gold)" />
+    <path class="draw" d="M44 162c3 12 12 21 24 26" stroke="var(--gold)" stroke-opacity="0.8" />
+    <path class="draw" d="M149 114c6 17 8.5 35 7 48" stroke="var(--gold)" />
+    <path class="draw" d="M156 162c-3 12-12 21-24 26" stroke="var(--gold)" stroke-opacity="0.8" />
+
+    <!-- Hands, closest to the source and the brightest thing in the drawing -->
+    <path class="draw" d="M68 188c5 3.5 10.5 5.5 16 6.5" stroke="var(--peach)" />
+    <path class="draw" d="M132 188c-5 3.5-10.5 5.5-16 6.5" stroke="var(--peach)" />
+    <path class="draw" d="M84 194.5c-3 1.5-4.5 4-4.5 7 0 3.5 2.5 6 6 6.5" stroke="var(--peach)" />
+    <path class="draw" d="M116 194.5c3 1.5 4.5 4 4.5 7 0 3.5-2.5 6-6 6.5" stroke="var(--peach)" />
+
+    <!-- The plate crops the figure; the figure does not end itself. -->
+    <path class="draw" d="M43 232c10 4 34 6 57 6s47-2 57-6" stroke="var(--gold)" stroke-opacity="0.42" />
+  </g>
+
+  <!-- The screen: the only filled shape and the only light source -->
+  <g transform="rotate(-8 100 186)">
+    <rect x="86" y="164" width="28" height="44" rx="3" fill="var(--peach)" fill-opacity="0.92" />
+    <rect x="86" y="164" width="28" height="44" rx="3" stroke="var(--peach)" stroke-width="2" />
+  </g>
+</svg>
+
+<style>
+  .figure {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+import '../styles/global.css';
+import { identity } from '../data/record';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0b0d14" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0d14'/%3E%3Cg fill='none' stroke='%23d9a94c'%3E%3Ccircle cx='16' cy='16' r='13'/%3E%3Ccircle cx='16' cy='16' r='9' opacity='.6'/%3E%3Ccircle cx='16' cy='16' r='5' opacity='.4'/%3E%3Ccircle cx='16' cy='16' r='1.6' fill='%23f2b98a' stroke='none'/%3E%3C/g%3E%3C/svg%3E"
+    />
+
+    <script is:inline>
+      document.documentElement.classList.remove('no-js');
+    </script>
+  </head>
+  <body>
+    <!--
+      THESIS: A career as a record sent outward to a stranger with no context — an
+      engraved manifest of real quantities, refusing the dark portfolio's card grid.
+      OWN-WORLD: Drenched void #0B0D14; engraved gold #D9A94C hairlines at four
+      opacities as the ONLY depth system; peach #F2B98A the single warm human light,
+      spent only on contact and live state; luminescent white #E9ECF2. Bricolage
+      Grotesque display, Martian Mono for every figure. No gradient, glass or glow —
+      every mark is drawn line.
+      STORY: A recruiter learns in seconds that Joe runs payments infrastructure at
+      scale, reads the quantities, sees one system at depth, and emails him.
+      FIRST VIEWPORT: Void. Etched disc off-centre right with pulsar rays. Left at
+      human scale: an engraved figure lit peach by a handheld screen, the name beside
+      it, one claim line. Real quantities pinned along the bottom, above the fold.
+      FORM: The Golden Record — my top-ranked grounded candidate, taken as
+      IMPECCABLE'S PICK over assigned candidate 4. Seed key b718fccd.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the
+      finish review, the verdict, DESIGN.md, and every shipping raster carrying its
+      provenance.
+    -->
+    <a href="#manifest" class="skip">Skip to the record</a>
+    <slot />
+
+    <style>
+      .skip {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        z-index: 100;
+        background: var(--void-deep);
+        color: var(--peach);
+        border: 1px solid var(--gold);
+        padding: 0.75rem 1.25rem;
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      .skip:focus {
+        left: 1rem;
+        top: 1rem;
+      }
+    </style>
+
+    <script>
+      const drawn = document.querySelectorAll<HTMLElement>('.inscribe, .draw, .wipe');
+      for (const node of drawn) {
+        // Rects, lines, ellipses and paths all inscribe; measure whatever can be.
+        if (typeof (node as SVGGeometryElement).getTotalLength === 'function') {
+          try {
+            const len = (node as SVGGeometryElement).getTotalLength();
+            if (len > 0) node.style.setProperty('--len', String(Math.ceil(len)));
+          } catch {
+            /* non-rendered geometry; leave the default length */
+          }
+        }
+      }
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const el = entry.target as HTMLElement;
+            const delay = Number(el.dataset.delay ?? 0);
+            window.setTimeout(() => el.classList.add('is-drawn'), delay);
+            io.unobserve(el);
+          }
+        },
+        { rootMargin: '0px 0px -12% 0px', threshold: 0.06 }
+      );
+      for (const node of drawn) io.observe(node);
+    </script>
+  </body>
+</html>

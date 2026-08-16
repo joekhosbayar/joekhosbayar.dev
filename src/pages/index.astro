@@ -1,0 +1,803 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Disc from '../components/Disc.astro';
+import Figure from '../components/Figure.astro';
+import Architecture from '../components/Architecture.astro';
+import { identity, manifest, sideA, sideB, education, tools } from '../data/record';
+---
+
+<Layout
+  title="Joe Khosbayar — Backend Engineer"
+  description="Backend engineer on payments infrastructure at Capital One. 100,000+ transactions a day, a 95% P95 latency reduction, and one real-time Go system running on two gigabytes of RAM."
+>
+  <div class="plate">
+    <div class="spine-rule"></div>
+
+    <!-- ============================ COVER ============================ -->
+    <header class="cover">
+      <nav class="cover-nav">
+        <a href={`mailto:${identity.email}`} class="hail">Make contact</a>
+      </nav>
+
+      <div class="cover-body">
+        <div class="human-id">
+          <h1 class="name inscribe">{identity.name}</h1>
+          <p class="claim inscribe" data-delay="120">{identity.claim}</p>
+          <p class="etched origin inscribe" data-delay="220">
+            {identity.location} · sending since 2022
+          </p>
+        </div>
+
+        <!-- The scale juxtaposition: one person, at their own size, standing
+             against the record. The figure belongs to the disc, not the text. -->
+        <div class="cover-stage">
+          <div class="cover-disc"><Disc idPrefix="cover" /></div>
+          <div class="human-art"><Figure /></div>
+        </div>
+      </div>
+
+      <!-- The manifest sits inside the first viewport. The record is beautiful;
+           the contents index is why anyone reads it. -->
+      <section class="manifest" id="manifest" aria-label="Contents of this record">
+        <ol class="manifest-list">
+          {
+            manifest.map((m, i) => (
+              <li class="manifest-row wipe" data-delay={i * 110}>
+                <span class="figure manifest-value">{m.value}</span>
+                <span class="manifest-unit">{m.unit}</span>
+                <span class="manifest-leader" aria-hidden="true" />
+                <span class="manifest-note">{m.note}</span>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+    </header>
+
+    <!-- ============================ SIDE A ============================ -->
+    <section class="passage" id="side-a">
+      <div class="head-row">
+        <h2 class="section-title inscribe">{sideA.employer}</h2>
+        <span class="etched">Side A · {sideA.span} · four positions, one track</span>
+      </div>
+      <p class="prose inscribe">
+        Four years at one company, from a first internship to <strong
+          >Senior Associate Software Engineer</strong
+        > on payments infrastructure — an intern twice, then hired into Consumer Identity,
+        then promoted into Bank Tech a year later. The systems below move money and
+        authenticate the people moving it, so the interesting constraint is always the same
+        one: it has to keep working while you change it.
+      </p>
+
+      <ol class="track">
+        {
+          sideA.positions.map((p, i) => (
+            <li class="stop inscribe" data-delay={i * 60}>
+              <span class="stop-mark" aria-hidden="true" />
+              <div class="stop-when">
+                <span class="figure stop-start">{p.start}</span>
+                <span class="etched stop-end">{p.end}</span>
+              </div>
+              <div class="stop-what">
+                <h3 class="stop-title">{p.title}</h3>
+                <p class="etched stop-team">
+                  {p.team} · {p.place}
+                </p>
+                <ul class="entries">
+                  {p.entries.map((e) => (
+                    <li>{e}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <!-- ============================ SIDE B ============================ -->
+    <section class="passage" id="side-b">
+      <div class="head-row">
+        <h2 class="section-title inscribe">{sideB.name}</h2>
+        <span class="etched">Side B · {sideB.role} · {sideB.span}</span>
+      </div>
+      <p class="prose inscribe">{sideB.premise}</p>
+
+      <p class="links inscribe">
+        <a href={sideB.url} class="hail hail-quiet">{sideB.urlLabel}</a>
+        <a href={sideB.repo} class="etched repo-link">source</a>
+      </p>
+
+      <div class="constraint inscribe">
+        <h3 class="constraint-line">{sideB.constraint.headline}</h3>
+        <p class="prose constraint-body">{sideB.constraint.body}</p>
+      </div>
+
+      <Architecture />
+
+      <ol class="decisions">
+        {
+          sideB.decisions.map((d, i) => (
+            <li class="decision inscribe" data-delay={i * 40}>
+              <h3 class="decision-title">{d.title}</h3>
+              <p class="prose decision-body">{d.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="trap inscribe">
+        <h3 class="decision-title">{sideB.deployTrap.title}</h3>
+        <p class="prose decision-body">{sideB.deployTrap.body}</p>
+      </div>
+
+      <!-- A defect register, published. No other portfolio ships one; to an
+           engineer reading closely it is the most persuasive thing here. -->
+      <div class="gaps" id="gaps">
+        <div class="head-row">
+          <h3 class="gaps-title inscribe">Known gaps</h3>
+          <span class="etched">{sideB.gaps.length} open · from the project's own register</span>
+        </div>
+        <dl class="gap-list">
+          {
+            sideB.gaps.map((g, i) => (
+              <div class="gap inscribe" data-delay={i * 30}>
+                <dt>{g.gap}</dt>
+                <dd>{g.impact}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </section>
+
+    <!-- ======================= MARGINALIA ======================= -->
+    <section class="passage" id="margin">
+      <div class="head-row">
+        <h2 class="section-title inscribe">Provenance</h2>
+        <span class="etched">Where this was made</span>
+      </div>
+
+      <div class="margin-grid">
+        <div class="inscribe">
+          <h3 class="margin-title">{education.school}</h3>
+          <p class="etched margin-sub">{education.division} · {education.span}</p>
+          <ul class="plain">
+            <li>{education.degree}</li>
+            {education.honors.map((h) => <li>{h}</li>)}
+            <li>{education.certification}</li>
+          </ul>
+        </div>
+
+        <div class="inscribe" data-delay="80">
+          <h3 class="margin-title">Instruments</h3>
+          <dl class="tool-list">
+            {
+              tools.map((t) => (
+                <div class="tool-row">
+                  <dt class="etched">{t.group}</dt>
+                  <dd>{t.items.join(' · ')}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CONTACT ============================ -->
+    <footer class="passage close" id="contact">
+      <h2 class="close-title inscribe">
+        This record was made to be played by someone who has never met me.
+      </h2>
+      <p class="prose close-body inscribe" data-delay="100">
+        If any of the above is the kind of work your team needs done, the fastest thing is
+        to write to me directly.
+      </p>
+
+      <div class="close-actions inscribe" data-delay="180">
+        <a href={`mailto:${identity.email}`} class="hail hail-large">{identity.email}</a>
+        <span class="close-links">
+          <a href={identity.linkedin}>LinkedIn</a>
+          <a href={identity.github}>GitHub</a>
+        </span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- The record persists while you read one track, and it is the way back to
+       the playback instruction: the whole stays visible AND contact stays one
+       step away, at every width. -->
+  <a class="orbit" href="#contact">
+    <span class="orbit-disc" aria-hidden="true"><Disc idPrefix="orbit" compact /></span>
+    <span class="orbit-label">Make contact</span>
+  </a>
+
+  <script>
+    // The playhead points at whatever the reader is inside of. One clock for
+    // the whole page: the disc turns, the ray tracks.
+    const orbit = document.querySelector<HTMLElement>('.orbit');
+    const cover = document.querySelector<HTMLElement>('.cover');
+    const marks = ['#side-a', '#side-b', '#gaps', '#margin', '#contact'];
+    const angles = [58, 130, 186, 248, 310];
+
+    const contact = document.querySelector<HTMLElement>('#contact');
+
+    if (orbit && cover) {
+      // Visible once the cover's own contact hail has scrolled away, and
+      // retired again once the reader has arrived at the real one.
+      let pastCover = false;
+      let atContact = false;
+      const sync = () => orbit.classList.toggle('is-out', pastCover && !atContact);
+
+      new IntersectionObserver(
+        ([entry]) => {
+          pastCover = !entry.isIntersecting;
+          sync();
+        },
+        { threshold: 0.12 }
+      ).observe(cover);
+
+      if (contact) {
+        new IntersectionObserver(
+          ([entry]) => {
+            atContact = entry.isIntersecting;
+            sync();
+          },
+          { threshold: 0.2 }
+        ).observe(contact);
+      }
+
+      const sections = marks
+        .map((sel, i) => ({ el: document.querySelector<HTMLElement>(sel), angle: angles[i] }))
+        .filter((s): s is { el: HTMLElement; angle: number } => Boolean(s.el));
+
+      let ticking = false;
+      const track = () => {
+        ticking = false;
+        const mid = window.innerHeight * 0.42;
+        let angle = 0;
+        for (const s of sections) {
+          if (s.el.getBoundingClientRect().top <= mid) angle = s.angle;
+        }
+        orbit.style.setProperty('--playhead', `${angle}deg`);
+      };
+      addEventListener(
+        'scroll',
+        () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(track);
+        },
+        { passive: true }
+      );
+      track();
+    }
+  </script>
+
+  <style>
+    /* ---------------------------------------------------------------- COVER */
+    .cover {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding-block: clamp(1.25rem, 3vh, 2rem) clamp(1.5rem, 4vh, 2.75rem);
+    }
+
+    .cover-nav {
+      display: flex;
+      justify-content: flex-end;
+      padding-left: calc(var(--spine) + 1.75rem);
+    }
+
+    .cover-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+      align-items: center;
+      gap: clamp(2rem, 5vw, 5rem);
+      padding-left: calc(var(--spine) + 1.75rem);
+      padding-block: clamp(1.5rem, 4vh, 3rem);
+    }
+
+    /* Human scale against the vast. The figure is measured against the record,
+       roughly one to five, and overlaps its lower edge so the two share a
+       depth — a person standing in front of the thing, not a decoration. */
+    .cover-stage {
+      position: relative;
+      justify-self: center;
+      width: min(100%, 46vh);
+      max-width: 480px;
+    }
+    .human-art {
+      position: absolute;
+      left: -6%;
+      bottom: -7%;
+      width: 21.5%;
+      pointer-events: none;
+    }
+
+    .name {
+      font-size: clamp(1.9rem, 1.1rem + 2.6vw, 3.1rem);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+    }
+    .claim {
+      margin-top: 1rem;
+      max-width: 34ch;
+      font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+      line-height: 1.5;
+      color: var(--dim);
+    }
+    .origin {
+      margin-top: 1.35rem;
+    }
+
+    .cover-disc {
+      width: 100%;
+    }
+
+    /* ------------------------------------------------------------- MANIFEST */
+    .manifest {
+      padding-left: calc(var(--spine) + 1.75rem);
+      border-top: 1px solid var(--etch-faint);
+      padding-top: clamp(1.1rem, 2.5vh, 1.75rem);
+    }
+    .manifest-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .manifest-row {
+      display: grid;
+      grid-template-columns: auto auto 1fr auto;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding-block: 0.28rem;
+    }
+    .manifest-value {
+      font-size: clamp(0.95rem, 0.88rem + 0.3vw, 1.15rem);
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: -0.03em;
+    }
+    .manifest-unit {
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+    .manifest-leader {
+      height: 1px;
+      background: var(--etch-ghost);
+      transform: translateY(-0.28em);
+    }
+    .manifest-note {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      color: var(--dim);
+      text-align: right;
+    }
+
+    /* ---------------------------------------------------------------- HEADS */
+    .passage {
+      padding-left: calc(var(--spine) + 1.75rem);
+      border-top: 1px solid var(--etch-faint);
+    }
+    .head-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2.25rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem);
+    }
+    .head-row .etched {
+      padding-bottom: 0.15em;
+    }
+
+    /* --------------------------------------------------------------- TRACK */
+    /* One continuous run with four marked positions — not four employers. */
+    .track {
+      list-style: none;
+      margin: 3.5rem 0 0;
+      padding: 0;
+      position: relative;
+    }
+    .track::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      bottom: 4rem;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        var(--etch-strong),
+        var(--etch) 55%,
+        var(--etch-ghost)
+      );
+    }
+    .stop {
+      position: relative;
+      display: grid;
+      grid-template-columns: 9.5rem minmax(0, 1fr);
+      gap: 0 clamp(1.5rem, 3vw, 3rem);
+      padding: 0 0 3.25rem 2rem;
+    }
+    .stop-mark {
+      position: absolute;
+      left: -3.5px;
+      top: 0.62rem;
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      background: var(--void);
+    }
+    .stop:first-child .stop-mark {
+      background: var(--peach);
+      border-color: var(--peach);
+    }
+    .stop-when {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .stop-start {
+      font-size: 0.95rem;
+      color: var(--gold);
+      letter-spacing: -0.01em;
+    }
+    .stop-title {
+      font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+      font-weight: 500;
+    }
+    .stop-team {
+      margin-top: 0.5rem;
+    }
+    .entries {
+      margin: 1.35rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+      max-width: var(--measure);
+      color: var(--dim);
+    }
+    .entries li {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+    .entries li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 0.7rem;
+      height: 1px;
+      background: var(--etch);
+    }
+
+    /* --------------------------------------------------------------- SIDE B */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1.75rem;
+    }
+    .repo-link {
+      text-decoration-color: var(--etch);
+    }
+
+    .constraint {
+      margin-top: 3.5rem;
+      padding-left: 1.75rem;
+      border-left: 1px solid var(--etch);
+    }
+    .constraint-line {
+      font-size: clamp(1.25rem, 1rem + 1.1vw, 1.8rem);
+      font-weight: 500;
+      max-width: 26ch;
+      color: var(--gold);
+    }
+    .constraint-body {
+      margin-top: 1.1rem;
+    }
+
+    .decisions {
+      list-style: none;
+      margin: 4rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0;
+    }
+    .decision,
+    .trap {
+      padding-block: 2rem;
+      border-top: 1px solid var(--etch-ghost);
+    }
+    .trap {
+      margin-top: 0;
+    }
+    .decision-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .decision-body {
+      margin-top: 0.7rem;
+    }
+
+    .gaps {
+      margin-top: 4.5rem;
+    }
+    .gaps-title {
+      font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+    }
+    /* Capped so nothing runs beneath the orbiting record in the corner. */
+    .gap-list,
+    .tool-list {
+      max-width: 68rem;
+    }
+    .gap-list {
+      margin: 0;
+      border-top: 1px solid var(--etch-faint);
+    }
+    .gap {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 0.4rem 2.5rem;
+      padding-block: 1.15rem;
+      border-bottom: 1px solid var(--etch-ghost);
+    }
+    .gap dt {
+      font-weight: 500;
+      color: var(--white);
+    }
+    .gap dd {
+      margin: 0;
+      color: var(--dim);
+      font-size: 0.94rem;
+    }
+
+    /* ------------------------------------------------------------ PROVENANCE */
+    .margin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+      gap: 3rem clamp(2rem, 5vw, 5rem);
+    }
+    .margin-title {
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+    .margin-sub {
+      margin-top: 0.5rem;
+    }
+    .plain {
+      margin: 1.25rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+      color: var(--dim);
+    }
+    .tool-list {
+      margin: 1.25rem 0 0;
+    }
+    .tool-row {
+      display: grid;
+      grid-template-columns: 8rem minmax(0, 1fr);
+      gap: 0.35rem 1.5rem;
+      padding-block: 0.6rem;
+      border-top: 1px solid var(--etch-ghost);
+    }
+    .tool-row dd {
+      margin: 0;
+      color: var(--dim);
+      font-size: 0.94rem;
+    }
+
+    /* ---------------------------------------------------------------- CLOSE */
+    .close {
+      padding-bottom: clamp(6rem, 14vh, 10rem);
+    }
+    .close-title {
+      font-size: clamp(1.5rem, 1.1rem + 1.7vw, 2.4rem);
+      max-width: 22ch;
+    }
+    .close-body {
+      margin-top: 1.5rem;
+    }
+    .close-actions {
+      margin-top: 2.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem 2.5rem;
+    }
+    .close-links {
+      display: flex;
+      gap: 1.75rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ----------------------------------------------------- THE HAIL (action) */
+    /* Peach is the only warm light on the record and it is spent here. */
+    .hail {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--peach);
+      text-decoration: none;
+      padding: 0.7rem 1.15rem;
+      border: 1px solid var(--peach);
+      transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+    }
+    .hail:hover,
+    .hail:focus-visible {
+      background: var(--peach);
+      color: var(--void-deep);
+    }
+    .hail-quiet {
+      border-color: var(--etch-strong);
+      color: var(--gold);
+    }
+    .hail-quiet:hover,
+    .hail-quiet:focus-visible {
+      background: var(--gold);
+      color: var(--void-deep);
+    }
+    .hail-large {
+      font-size: clamp(0.78rem, 0.7rem + 0.4vw, 0.95rem);
+      padding: 1rem 1.6rem;
+      letter-spacing: 0.08em;
+      text-transform: none;
+    }
+
+    /* ---------------------------------------------------------------- ORBIT */
+    /* The record, still turning, doubling as the way back to the playback
+       instruction. Present at every width — the phone reader needs it most. */
+    .orbit {
+      position: fixed;
+      right: clamp(0.75rem, 2.5vw, 2.5rem);
+      bottom: clamp(0.75rem, 2.5vw, 2.5rem);
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.45rem 0.95rem 0.45rem 0.5rem;
+      background: var(--void);
+      border: 1px solid var(--etch-strong);
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(0.5rem);
+      pointer-events: none;
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease),
+        border-color 0.4s var(--ease);
+    }
+    .orbit.is-out {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .orbit-disc {
+      display: block;
+      width: clamp(36px, 4vw, 44px);
+      flex: none;
+    }
+    .orbit-label {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--peach);
+      white-space: nowrap;
+    }
+    .orbit:hover,
+    .orbit:focus-visible {
+      border-color: var(--peach);
+    }
+
+    /* ------------------------------------------------------------ NARROWER */
+    @media (max-width: 900px) {
+      .cover-body {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2.5rem;
+      }
+      /* The record still bleeds past the trim, but the name has to arrive
+         inside the first screen — a recruiter on a phone decides there. */
+      .cover-stage {
+        order: -1;
+        justify-self: end;
+        width: min(58vw, 290px);
+        margin-right: -7vw;
+      }
+      .cover-body {
+        padding-block: 1.25rem;
+      }
+      .gap {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.35rem;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .cover-nav {
+        padding-left: 0;
+      }
+      .cover-body,
+      .manifest,
+      .passage {
+        padding-left: 1.5rem;
+      }
+      .cover-stage {
+        width: min(52vw, 244px);
+        margin-right: -5vw;
+      }
+      .claim {
+        margin-top: 0.75rem;
+      }
+      .origin {
+        margin-top: 1rem;
+      }
+      .manifest-row {
+        grid-template-columns: auto 1fr;
+        row-gap: 0.15rem;
+      }
+      .manifest-leader {
+        display: none;
+      }
+      .manifest-note {
+        grid-column: 1 / -1;
+        text-align: left;
+      }
+      .stop {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.75rem;
+        padding-left: 1.5rem;
+      }
+      .stop-when {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.6rem;
+      }
+      .tool-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      /* Docked, not floating. A fixed pill parked over a full-width measure
+         eats the prose that does the persuading; a bar sits outside it, and
+         the plate reserves its height so nothing is permanently hidden. */
+      .orbit {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        gap: 0.7rem;
+        padding: 0.6rem 1rem;
+        border-width: 1px 0 0 0;
+        transform: translateY(100%);
+      }
+      .orbit.is-out {
+        transform: none;
+      }
+      .orbit-label {
+        font-size: 0.72rem;
+      }
+      .plate {
+        padding-bottom: 4.25rem;
+      }
+    }
+  </style>
+</Layout>

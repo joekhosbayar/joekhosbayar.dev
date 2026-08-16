@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+
+# Personal documents — this repository is public.
+# The resume carries a phone number that must not be published.
+joe_khosbayar_resume.pdf
+*.pdf
+
+# Impeccable: local machine config and transient review artifacts.
+# DESIGN.md and any design sidecar are durable and stay tracked.
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/review/
+.impeccable/questions/
