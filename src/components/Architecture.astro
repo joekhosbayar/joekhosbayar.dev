@@ -1,0 +1,155 @@
+---
+/**
+ * Mighty's runtime, engraved. This is the attract loop: the project shows the
+ * thing working rather than describing it behind a title. Boxes and edges
+ * inscribe themselves on entry, then the labels arrive.
+ *
+ * PUBLIC REPO: shape and reasoning only. No account identifiers, bucket names,
+ * or parameter paths appear here or anywhere on this site.
+ */
+const box = (x: number, y: number, w: number, h: number) => ({ x, y, w, h });
+
+const nodes = [
+  { ...box(8, 176, 128, 54), label: 'browser', sub: 'https · wss', outside: true },
+  { ...box(186, 176, 176, 54), label: 'caddy', sub: 'tls · reverse proxy' },
+  { ...box(414, 176, 152, 54), label: 'mighty', sub: 'go · rest + ws', lit: true },
+  { ...box(612, 66, 164, 50), label: 'postgres', sub: 'durable ledger' },
+  { ...box(612, 178, 164, 50), label: 'redis', sub: 'hot state · locks' },
+  { ...box(612, 290, 164, 50), label: 'alloy', sub: 'sole egress' },
+  { ...box(832, 268, 232, 94), label: 'grafana cloud', sub: 'metrics · logs · traces', outside: true },
+];
+
+const edges = [
+  { d: 'M136 203 H186' },
+  { d: 'M362 203 H414' },
+  { d: 'M566 195 C588 195 590 91 612 91' },
+  { d: 'M566 203 H612' },
+  { d: 'M566 211 C588 211 590 315 612 315', dashed: true },
+  { d: 'M776 315 H832', lit: true },
+];
+---
+
+<figure class="arch">
+  <div class="arch-scroll">
+    <svg viewBox="0 0 1096 400" role="img" aria-labelledby="arch-title" fill="none">
+      <title id="arch-title"
+        >Six containers on one 2 gigabyte ARM box: a browser reaches Caddy, which proxies
+        the Go server; the server talks to Postgres and Redis, and exports telemetry to a
+        collector that is the only path out to Grafana Cloud.</title
+      >
+
+      <!-- The host. The constraint is drawn, not stated. -->
+      <!-- Dashed elements fade rather than inscribe: `.draw` sets
+           stroke-dasharray in CSS, which would beat the presentation attribute
+           and erase the encoding (dashed = outside the box, dashed = async). -->
+      <rect
+        class="inscribe"
+        x="160"
+        y="30"
+        width="646"
+        height="346"
+        stroke="var(--etch)"
+        stroke-width="1"
+        stroke-dasharray="3 5"
+      />
+      <g class="inscribe" data-delay="700">
+        <text x="178" y="54" class="arch-frame">one ec2 t4g.small — 2 gb ram, arm64</text>
+        <text x="178" y="366" class="arch-frame"
+          >the collector publishes no port — it only sends</text
+        >
+      </g>
+
+      {
+        edges.map((e, i) => (
+          <path
+            class={e.dashed ? 'inscribe' : 'draw'}
+            data-delay={220 + i * 70}
+            d={e.d}
+            stroke={e.lit ? 'var(--peach)' : 'var(--gold)'}
+            stroke-opacity={e.lit ? 0.85 : 0.5}
+            stroke-width="1.1"
+            stroke-dasharray={e.dashed ? '4 4' : undefined}
+          />
+        ))
+      }
+
+      {
+        nodes.map((n, i) => (
+          <g>
+            <rect
+              class={n.outside ? 'inscribe' : 'draw'}
+              data-delay={i * 80}
+              x={n.x}
+              y={n.y}
+              width={n.w}
+              height={n.h}
+              stroke={n.lit ? 'var(--etch-strong)' : 'var(--etch)'}
+              stroke-width="1"
+              stroke-dasharray={n.outside ? '3 5' : undefined}
+            />
+            <g class="inscribe" data-delay={480 + i * 60}>
+              <text x={n.x + 14} y={n.y + 25} class="arch-label">
+                {n.label}
+              </text>
+              <text x={n.x + 14} y={n.y + 42} class="arch-sub">
+                {n.sub}
+              </text>
+            </g>
+          </g>
+        ))
+      }
+    </svg>
+  </div>
+  <figcaption class="etched">
+    Six containers on one 2&nbsp;GB ARM box. Only the proxy publishes a port, and only the
+    collector talks to the outside.
+  </figcaption>
+</figure>
+
+<style>
+  .arch {
+    margin: 3rem 0 0;
+  }
+  .arch-scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 0.75rem;
+    padding-inline-end: 1.25rem;
+  }
+  .arch-scroll svg {
+    display: block;
+    width: 100%;
+    min-width: 800px;
+    height: auto;
+  }
+  /* Where the diagram is wider than the column, the trim is drawn rather than
+     accidental — a clipped label reads as "there is more", not as breakage. */
+  @media (max-width: 940px) {
+    .arch-scroll {
+      mask-image: linear-gradient(to right, #000 74%, transparent 98%);
+    }
+  }
+  .arch-label {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    fill: var(--white);
+  }
+  .arch-sub,
+  .arch-frame {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    fill: var(--dim);
+  }
+  figcaption {
+    margin-top: 1rem;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    max-width: 52ch;
+  }
+</style>
