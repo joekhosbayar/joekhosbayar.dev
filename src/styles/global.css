@@ -111,6 +111,57 @@ a:hover {
   text-decoration-color: var(--gold-bright);
 }
 
+/* --- SVG paint ------------------------------------------------------------
+   The authored SVGs carry their colours as presentation attributes
+   (stroke="var(--gold)"). Presentation attributes are NOT CSS declarations,
+   and var() substitution inside them is not supported everywhere: where it
+   fails the attribute is invalid and the property falls back to its initial
+   value — stroke: none (the line disappears) and fill: black (the shape goes
+   black on a near-black ground). That shipped once as a dark-on-dark diagram.
+
+   These rules re-declare the same paint as real CSS, which supports var()
+   universally and outranks any presentation attribute. Adding a new colour to
+   an SVG means adding its pair here too. */
+[stroke='var(--gold)'] {
+  stroke: var(--gold);
+}
+[stroke='var(--gold-bright)'] {
+  stroke: var(--gold-bright);
+}
+[stroke='var(--peach)'] {
+  stroke: var(--peach);
+}
+[stroke='var(--white)'] {
+  stroke: var(--white);
+}
+[stroke='var(--etch)'] {
+  stroke: var(--etch);
+}
+[stroke='var(--etch-strong)'] {
+  stroke: var(--etch-strong);
+}
+[stroke='var(--etch-faint)'] {
+  stroke: var(--etch-faint);
+}
+[stroke='var(--etch-ghost)'] {
+  stroke: var(--etch-ghost);
+}
+[fill='var(--void)'] {
+  fill: var(--void);
+}
+[fill='var(--void-deep)'] {
+  fill: var(--void-deep);
+}
+[fill='var(--peach)'] {
+  fill: var(--peach);
+}
+[fill='var(--gold)'] {
+  fill: var(--gold);
+}
+[fill='var(--white)'] {
+  fill: var(--white);
+}
+
 /* --- Type ---------------------------------------------------------------- */
 
 h1,
