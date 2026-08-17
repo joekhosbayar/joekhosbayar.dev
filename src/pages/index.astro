@@ -115,22 +115,6 @@ import { identity, manifest, sideA, sideB, education, tools } from '../data/reco
 
       <Architecture />
 
-      <ol class="decisions">
-        {
-          sideB.decisions.map((d, i) => (
-            <li class="decision inscribe" data-delay={i * 40}>
-              <h3 class="decision-title">{d.title}</h3>
-              <p class="prose decision-body">{d.body}</p>
-            </li>
-          ))
-        }
-      </ol>
-
-      <div class="trap inscribe">
-        <h3 class="decision-title">{sideB.deployTrap.title}</h3>
-        <p class="prose decision-body">{sideB.deployTrap.body}</p>
-      </div>
-
       <!-- What is actually running. Capability stated as fact, each line
            traceable to the engineering documentation. -->
       <div class="gaps" id="capabilities">
@@ -507,30 +491,6 @@ import { identity, manifest, sideA, sideB, education, tools } from '../data/reco
     }
     .constraint-body {
       margin-top: 1.1rem;
-    }
-
-    .decisions {
-      list-style: none;
-      margin: 4rem 0 0;
-      padding: 0;
-      display: grid;
-      gap: 0;
-    }
-    .decision,
-    .trap {
-      padding-block: 2rem;
-      border-top: 1px solid var(--etch-ghost);
-    }
-    .trap {
-      margin-top: 0;
-    }
-    .decision-title {
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-    }
-    .decision-body {
-      margin-top: 0.7rem;
     }
 
     .gaps {

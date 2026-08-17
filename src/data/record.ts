@@ -113,34 +113,8 @@ export const sideB = {
     'A real-time multiplayer server for Mighty, the Korean trick-taking card game. Live at themighty.gg.',
   constraint: {
     headline: 'Two gigabytes of RAM and a $10 / month budget decided everything.',
-    body: 'The whole stack — game server, database, cache, proxy and telemetry collector — runs on one 2 GB ARM box for about ten dollars a month. That budget puts its telemetry on a free tier that silently drops data past 10,000 metric series, failing precisely when monitoring is needed. Nearly every decision below is downstream of those limits.',
+    body: 'The whole stack — game server, database, cache, proxy and telemetry collector — runs on one 2 GB ARM box for about ten dollars a month. That budget puts its telemetry on a free tier that silently drops data past 10,000 metric series, failing precisely when monitoring is needed. Everything below is built inside those limits.',
   },
-  decisions: [
-    {
-      title: 'The cardinality rule',
-      body: 'Game, user, and connection IDs are span attributes and log fields only — never metric labels, never log labels, never span names. Past 10,000 series the backend drops data silently, so unbounded labels do not degrade monitoring, they delete it. A test scans for forbidden label keys, and a helper collapses the one client-controlled field to a bounded set at every call site.',
-    },
-    {
-      title: 'No span covers a whole connection',
-      body: 'A game lasts an entire session, so a connection-length span is unreadable in a trace viewer and pins SDK memory for hours. Instead: a short handshake span for upgrade through auth, then one root span per inbound frame — ended explicitly on every exit path, never deferred, since a deferred end inside the read loop would hold every span open until the socket closed.',
-    },
-    {
-      title: 'The collector may die; the game may not',
-      body: 'The telemetry collector is the only container holding vendor credentials and the only egress path, so the game server never learns which vendor exists — swapping backends is a config change on one container. The server depends on it only by existence, so a crash-looping collector cannot take down a match. It fails quietly, which is exactly why a "telemetry blind" alert exists.',
-    },
-    {
-      title: 'Instrumentation is off by default',
-      body: 'With no exporter endpoint set, initialization installs no-op providers: no exporters, no network, no goroutines. The dev stack runs no collector and the test suite must never open a socket.',
-    },
-    {
-      title: 'Out-of-band alarms that outlive the system watching',
-      body: 'Grafana alert rules cover telemetry blindness, memory exhaustion, and a filling disk. Separately and deliberately, CloudWatch holds an instance status check, an external HTTPS probe on the health endpoint, and a budget tripwire — they work precisely when the in-band path is dead.',
-    },
-    {
-      title: 'Secrets are read by the thing that uses them',
-      body: 'Two disjoint credential sets: a data-plane set the box fetches at deploy time through its instance role, and a control-plane set that never leaves the operator laptop. OpenTofu is deliberately not allowed to read the first — it stores data-source results in state in plaintext, and a copy at rest with no consumer is pure downside.',
-    },
-  ],
   /**
    * What is actually running in production. Every line is sourced from the
    * Mighty engineering documentation — capability, not adjective.
@@ -175,10 +149,6 @@ export const sideB = {
       body: 'Images built for Graviton in CI, published to a private registry, and rolled out to the box over SSM — no inbound SSH, no manual step, and log rotation bounded on every container.',
     },
   ],
-  deployTrap: {
-    title: 'A trap worth naming',
-    body: 'The object-store sync compares size and modification time. A same-length edit — flipping a comparison operator, renaming a config key while preserving column alignment — is silently skipped, leaving the box on the old file while every command reports success.',
-  },
 };
 
 export const education = {
