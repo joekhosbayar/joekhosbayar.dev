@@ -115,35 +115,19 @@ import { identity, manifest, sideA, sideB, education, tools } from '../data/reco
 
       <Architecture />
 
-      <ol class="decisions">
-        {
-          sideB.decisions.map((d, i) => (
-            <li class="decision inscribe" data-delay={i * 40}>
-              <h3 class="decision-title">{d.title}</h3>
-              <p class="prose decision-body">{d.body}</p>
-            </li>
-          ))
-        }
-      </ol>
-
-      <div class="trap inscribe">
-        <h3 class="decision-title">{sideB.deployTrap.title}</h3>
-        <p class="prose decision-body">{sideB.deployTrap.body}</p>
-      </div>
-
-      <!-- A defect register, published. No other portfolio ships one; to an
-           engineer reading closely it is the most persuasive thing here. -->
-      <div class="gaps" id="gaps">
+      <!-- What is actually running. Capability stated as fact, each line
+           traceable to the engineering documentation. -->
+      <div class="gaps" id="capabilities">
         <div class="head-row">
-          <h3 class="gaps-title inscribe">Known gaps</h3>
-          <span class="etched">{sideB.gaps.length} open · from the project's own register</span>
+          <h3 class="gaps-title inscribe">Running in production</h3>
+          <span class="etched">{sideB.capabilities.length} systems · live at {sideB.urlLabel}</span>
         </div>
         <dl class="gap-list">
           {
-            sideB.gaps.map((g, i) => (
+            sideB.capabilities.map((c, i) => (
               <div class="gap inscribe" data-delay={i * 30}>
-                <dt>{g.gap}</dt>
-                <dd>{g.impact}</dd>
+                <dt>{c.title}</dt>
+                <dd>{c.body}</dd>
               </div>
             ))
           }
@@ -218,7 +202,7 @@ import { identity, manifest, sideA, sideB, education, tools } from '../data/reco
     // the whole page: the disc turns, the ray tracks.
     const orbit = document.querySelector<HTMLElement>('.orbit');
     const cover = document.querySelector<HTMLElement>('.cover');
-    const marks = ['#side-a', '#side-b', '#gaps', '#margin', '#contact'];
+    const marks = ['#side-a', '#side-b', '#capabilities', '#margin', '#contact'];
     const angles = [58, 130, 186, 248, 310];
 
     const contact = document.querySelector<HTMLElement>('#contact');
@@ -507,30 +491,6 @@ import { identity, manifest, sideA, sideB, education, tools } from '../data/reco
     }
     .constraint-body {
       margin-top: 1.1rem;
-    }
-
-    .decisions {
-      list-style: none;
-      margin: 4rem 0 0;
-      padding: 0;
-      display: grid;
-      gap: 0;
-    }
-    .decision,
-    .trap {
-      padding-block: 2rem;
-      border-top: 1px solid var(--etch-ghost);
-    }
-    .trap {
-      margin-top: 0;
-    }
-    .decision-title {
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-    }
-    .decision-body {
-      margin-top: 0.7rem;
     }
 
     .gaps {

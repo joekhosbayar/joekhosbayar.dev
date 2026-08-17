@@ -112,48 +112,43 @@ export const sideB = {
   premise:
     'A real-time multiplayer server for Mighty, the Korean trick-taking card game. Live at themighty.gg.',
   constraint: {
-    headline: 'Two gigabytes of RAM and a ten-thousand-series ceiling decided everything.',
-    body: 'The whole stack runs on one 2 GB ARM box, and its telemetry goes to a free tier that silently drops data past 10,000 metric series — failing precisely when monitoring is needed. Nearly every interesting decision below is downstream of those two numbers.',
+    headline: 'Two gigabytes of RAM and a $10 / month budget decided everything.',
+    body: 'The whole stack — game server, database, cache, proxy and telemetry collector — runs on one 2 GB ARM box for about ten dollars a month. That budget puts its telemetry on a free tier that silently drops data past 10,000 metric series, failing precisely when monitoring is needed. Everything below is built inside those limits.',
   },
-  decisions: [
+  /**
+   * What is actually running in production. Every line is sourced from the
+   * Mighty engineering documentation — capability, not adjective.
+   */
+  capabilities: [
     {
-      title: 'The cardinality rule',
-      body: 'Game, user, and connection IDs are span attributes and log fields only — never metric labels, never log labels, never span names. Past 10,000 series the backend drops data silently, so unbounded labels do not degrade monitoring, they delete it. A test scans for forbidden label keys, and a helper collapses the one client-controlled field to a bounded set at every call site.',
+      title: 'Authenticated real-time play',
+      body: 'Full game sessions held open over WebSockets behind Cognito-backed sign-in, with an authentication timeout on the handshake, an origin allowlist, and per-user and per-IP connection caps.',
     },
     {
-      title: 'No span covers a whole connection',
-      body: 'A game lasts an entire session, so a connection-length span is unreadable in a trace viewer and pins SDK memory for hours. Instead: a short handshake span for upgrade through auth, then one root span per inbound frame — ended explicitly on every exit path, never deferred, since a deferred end inside the read loop would hold every span open until the socket closed.',
+      title: 'Rate limiting at two layers',
+      body: 'Ten messages a second with a burst of twenty on every socket, plus a Redis-backed HTTP limiter behind a custom proxy build. Both are instrumented, so whether a real player has ever been clamped is a question with an answer.',
     },
     {
-      title: 'The collector may die; the game may not',
-      body: 'The telemetry collector is the only container holding vendor credentials and the only egress path, so the game server never learns which vendor exists — swapping backends is a config change on one container. The server depends on it only by existence, so a crash-looping collector cannot take down a match. It fails quietly, which is exactly why a "telemetry blind" alert exists.',
+      title: 'Version-checked game state',
+      body: 'Every mutation is optimistically concurrency-controlled against a version, and the conflict rate is a first-class metric rather than a guess — strain on the state model is measured, not assumed.',
     },
     {
-      title: 'Instrumentation is off by default',
-      body: 'With no exporter endpoint set, initialization installs no-op providers: no exporters, no network, no goroutines. The dev stack runs no collector and the test suite must never open a socket.',
+      title: 'Traces, metrics and logs that join up',
+      body: 'Eight custom instruments alongside automatic HTTP, SQL pool, Redis pool and Go runtime telemetry. Every log line carries its trace and span IDs, and a derived field links a log straight through to the trace that produced it.',
     },
     {
-      title: 'Out-of-band alarms that outlive the system watching',
-      body: 'Grafana alert rules cover telemetry blindness, memory exhaustion, and a filling disk. Separately and deliberately, CloudWatch holds an instance status check, an external HTTPS probe on the health endpoint, and a budget tripwire — they work precisely when the in-band path is dead.',
+      title: 'Migrations that gate the server',
+      body: 'Schema migrations run once against a health-checked database and must exit clean before the game server is allowed to start. A half-migrated box cannot serve a match.',
     },
     {
-      title: 'Secrets are read by the thing that uses them',
-      body: 'Two disjoint credential sets: a data-plane set the box fetches at deploy time through its instance role, and a control-plane set that never leaves the operator laptop. OpenTofu is deliberately not allowed to read the first — it stores data-source results in state in plaintext, and a copy at rest with no consumer is pure downside.',
+      title: 'Alerting provisioned as code',
+      body: 'Alert rules, contact point and notification policy declared in OpenTofu and version-controlled, covering telemetry blindness, memory exhaustion and disk pressure — with CloudWatch alarms held out of band for the case where the in-band path is the thing that died.',
+    },
+    {
+      title: 'Reproducible ARM64 delivery',
+      body: 'Images built for Graviton in CI, published to a private registry, and rolled out to the box over SSM — no inbound SSH, no manual step, and log rotation bounded on every container.',
     },
   ],
-  /** Published from the project's own defect register. */
-  gaps: [
-    { gap: 'A status column is never updated', impact: 'The lobby listing reads stale game status. A pre-existing product bug.' },
-    { gap: 'Per-container metrics disabled', impact: 'No per-container CPU or memory. Gated on measured headroom — it is the heaviest component on a 2 GB box.' },
-    { gap: 'Data race under repeated race-detector runs', impact: 'Test-only: a global logger swap racing a goroutine that outlives its test. CI has no race detector today; it will bite when added.' },
-    { gap: 'A span helper does not clamp its own input', impact: 'Sanitisation lives at the single call site. This bug class has appeared twice by different paths; clamping inside the helper is a two-line fix.' },
-    { gap: 'Four unwrapped errors in the rules engine', impact: 'Some move rejections record an error outcome where they should record an invalid one.' },
-    { gap: 'Traces sampled at 100%', impact: 'Tunable without a rebuild, but trace volume needs watching against the monthly ceiling.' },
-  ],
-  deployTrap: {
-    title: 'A trap worth naming',
-    body: 'The object-store sync compares size and modification time. A same-length edit — flipping a comparison operator, renaming a config key while preserving column alignment — is silently skipped, leaving the box on the old file while every command reports success.',
-  },
 };
 
 export const education = {
