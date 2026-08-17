@@ -159,15 +159,42 @@
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "The name on the cover. Once per page." },
-      "headline": { "displayName": "Headline", "purpose": "Passage titles and the closing line." },
-      "title": { "displayName": "Title", "purpose": "A position title on the career track." },
-      "subtitle": { "displayName": "Subtitle", "purpose": "Decision and trap headings inside Side B." },
-      "lead": { "displayName": "Lead", "purpose": "The single claim line under the name, capped at 34ch." },
-      "body": { "displayName": "Body", "purpose": "All prose, capped at the 68ch measure." },
-      "label": { "displayName": "Label (.etched)", "purpose": "Every section coordinate, team line, tool group, and caption. Mono, uppercase, wide-tracked." },
-      "figure": { "displayName": "Figure", "purpose": "Manifest quantities and track dates. Mono with tabular numerals, gold." },
-      "action": { "displayName": "Action", "purpose": "The hail and the orbit label. The only peach type on the page." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name on the cover. Once per page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Passage titles and the closing line."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "A position title on the career track."
+      },
+      "subtitle": {
+        "displayName": "Subtitle",
+        "purpose": "Decision and trap headings inside Side B."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The single claim line under the name, capped at 34ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose, capped at the 68ch measure."
+      },
+      "label": {
+        "displayName": "Label (.etched)",
+        "purpose": "Every section coordinate, team line, tool group, and caption. Mono, uppercase, wide-tracked."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Manifest quantities and track dates. Mono with tabular numerals, gold."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "The hail and the orbit label. The only peach type on the page."
+      }
     },
     "shadows": [],
     "motion": [
@@ -228,9 +255,18 @@
       }
     ],
     "breakpoints": [
-      { "name": "narrow", "value": "900px" },
-      { "name": "phone", "value": "680px" },
-      { "name": "diagram-fade", "value": "940px" }
+      {
+        "name": "narrow",
+        "value": "900px"
+      },
+      {
+        "name": "phone",
+        "value": "680px"
+      },
+      {
+        "name": "diagram-fade",
+        "value": "940px"
+      }
     ]
   },
   "components": [
@@ -294,7 +330,7 @@
       "name": "Gap Row",
       "kind": "custom",
       "refersTo": null,
-      "description": "The published defect register: a term/description pair on ghost hairlines. Collapses to one column below 900px.",
+      "description": "A two-column record of shipped capability: a term/description pair on ghost hairlines. Collapses to one column below 900px.",
       "html": "<dl class=\"ds-gaps\"><div class=\"ds-gap\"><dt>No horizontal reflow of the architecture diagram</dt><dd>Below 680px the diagram scrolls and shows three of seven nodes.</dd></div><div class=\"ds-gap\"><dt>Telemetry drops past 10,000 metric series</dt><dd>The free tier fails silently, precisely when monitoring is needed.</dd></div></dl>",
       "css": ".ds-gaps { margin: 0; max-width: 68rem; border-top: 1px solid rgba(217, 169, 76, 0.17); } .ds-gap { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 0.4rem 2.5rem; padding-block: 1.15rem; border-bottom: 1px solid rgba(217, 169, 76, 0.08); } .ds-gap dt { font-weight: 500; color: var(--white, #e9ecf2); } .ds-gap dd { margin: 0; color: var(--dim, #8c93a6); font-size: 0.94rem; } @media (max-width: 900px) { .ds-gap { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; } }"
     },

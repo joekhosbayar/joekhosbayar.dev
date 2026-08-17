@@ -112,8 +112,8 @@ export const sideB = {
   premise:
     'A real-time multiplayer server for Mighty, the Korean trick-taking card game. Live at themighty.gg.',
   constraint: {
-    headline: 'Two gigabytes of RAM and a ten-thousand-series ceiling decided everything.',
-    body: 'The whole stack runs on one 2 GB ARM box, and its telemetry goes to a free tier that silently drops data past 10,000 metric series — failing precisely when monitoring is needed. Nearly every interesting decision below is downstream of those two numbers.',
+    headline: 'Two gigabytes of RAM and a $10 / month budget decided everything.',
+    body: 'The whole stack — game server, database, cache, proxy and telemetry collector — runs on one 2 GB ARM box for about ten dollars a month. That budget puts its telemetry on a free tier that silently drops data past 10,000 metric series, failing precisely when monitoring is needed. Nearly every decision below is downstream of those limits.',
   },
   decisions: [
     {
@@ -141,14 +141,39 @@ export const sideB = {
       body: 'Two disjoint credential sets: a data-plane set the box fetches at deploy time through its instance role, and a control-plane set that never leaves the operator laptop. OpenTofu is deliberately not allowed to read the first — it stores data-source results in state in plaintext, and a copy at rest with no consumer is pure downside.',
     },
   ],
-  /** Published from the project's own defect register. */
-  gaps: [
-    { gap: 'A status column is never updated', impact: 'The lobby listing reads stale game status. A pre-existing product bug.' },
-    { gap: 'Per-container metrics disabled', impact: 'No per-container CPU or memory. Gated on measured headroom — it is the heaviest component on a 2 GB box.' },
-    { gap: 'Data race under repeated race-detector runs', impact: 'Test-only: a global logger swap racing a goroutine that outlives its test. CI has no race detector today; it will bite when added.' },
-    { gap: 'A span helper does not clamp its own input', impact: 'Sanitisation lives at the single call site. This bug class has appeared twice by different paths; clamping inside the helper is a two-line fix.' },
-    { gap: 'Four unwrapped errors in the rules engine', impact: 'Some move rejections record an error outcome where they should record an invalid one.' },
-    { gap: 'Traces sampled at 100%', impact: 'Tunable without a rebuild, but trace volume needs watching against the monthly ceiling.' },
+  /**
+   * What is actually running in production. Every line is sourced from the
+   * Mighty engineering documentation — capability, not adjective.
+   */
+  capabilities: [
+    {
+      title: 'Authenticated real-time play',
+      body: 'Full game sessions held open over WebSockets behind Cognito-backed sign-in, with an authentication timeout on the handshake, an origin allowlist, and per-user and per-IP connection caps.',
+    },
+    {
+      title: 'Rate limiting at two layers',
+      body: 'Ten messages a second with a burst of twenty on every socket, plus a Redis-backed HTTP limiter behind a custom proxy build. Both are instrumented, so whether a real player has ever been clamped is a question with an answer.',
+    },
+    {
+      title: 'Version-checked game state',
+      body: 'Every mutation is optimistically concurrency-controlled against a version, and the conflict rate is a first-class metric rather than a guess — strain on the state model is measured, not assumed.',
+    },
+    {
+      title: 'Traces, metrics and logs that join up',
+      body: 'Eight custom instruments alongside automatic HTTP, SQL pool, Redis pool and Go runtime telemetry. Every log line carries its trace and span IDs, and a derived field links a log straight through to the trace that produced it.',
+    },
+    {
+      title: 'Migrations that gate the server',
+      body: 'Schema migrations run once against a health-checked database and must exit clean before the game server is allowed to start. A half-migrated box cannot serve a match.',
+    },
+    {
+      title: 'Alerting provisioned as code',
+      body: 'Alert rules, contact point and notification policy declared in OpenTofu and version-controlled, covering telemetry blindness, memory exhaustion and disk pressure — with CloudWatch alarms held out of band for the case where the in-band path is the thing that died.',
+    },
+    {
+      title: 'Reproducible ARM64 delivery',
+      body: 'Images built for Graviton in CI, published to a private registry, and rolled out to the box over SSM — no inbound SSH, no manual step, and log rotation bounded on every container.',
+    },
   ],
   deployTrap: {
     title: 'A trap worth naming',
